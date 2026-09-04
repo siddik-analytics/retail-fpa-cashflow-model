@@ -803,3 +803,64 @@ Beyond that, four commentary statements and one metadata field need attention be
 That is the complete blocking list. Everything in Should Fix and Optional can follow in a later pass without holding publication.
 
 **Once those are done, this is a strong portfolio artifact.** The cash engine reconciles perfectly across every identity tested. The scenario engine is a genuine rebuild that provably reproduces the base case. The channel P&L makes the right analytical choice on overhead and explains why. The commentary is live-linked, decision-oriented, and in Insight 2 arithmetically self-proving. The input discipline is flawless across 185 cells. The failures found are the failures of a real model — a timing subtlety, some prose that drifted from the numbers, and controls that test what the builder was confident about rather than what they were not. Those are fixable in one focused pass, and fixing them is what will make the finished artifact defensible under exactly the scrutiny it is built to attract.
+
+---
+
+## Phase 3 Remediation Status
+
+*Appended 3 September 2026. The findings above are preserved exactly as issued in Phase 2 and have not been edited. This section records only what happened to each of them. Full detail, evidence and before/after figures: [REMEDIATION_LOG.md](REMEDIATION_LOG.md).*
+
+**Verdict moved from NOT READY to: all P0 and P1 findings closed; 7 of 12 P2 findings closed.**
+
+### P0
+
+| ID | Finding | Status |
+|---|---|---|
+| P0-1 | Exit scenario never pays August store payroll | **RESOLVED** — payroll rewired onto a dynamic accrual share; S$17,903.23 now paid; new control #33 guards it |
+
+### P1
+
+| ID | Finding | Status |
+|---|---|---|
+| P1-1 | Document metadata identifies the generator, not the author | **RESOLVED** — saved through native Excel; Author and Last-modified-by set to `siddik-analytics`; LibreOffice extension removed |
+| P1-2 | Scenario narrative contradicts the model's own threshold | **RESOLVED** — `Scenarios!A79` now a live formula, and leads with the cash consequence |
+| P1-3 | Dashboard headline conclusions will clip | **WITHDRAWN — NOT A DEFECT.** The finding was flagged as a calculated estimate needing visual confirmation; confirmation disproved it. Excel `AutoFit` and GDI `MeasureString` both put the longest string at 790.5pt against 864pt available — one line. The audit's ~136-characters-per-line estimate was wrong; Calibri 10pt prose averages ~4.1pt per character, giving ~210. No row heights were changed. |
+| P1-4 | Minimum-buffer note unsupported by the model | **RESOLVED** — `Assumptions!D13` now computes `=B13/B94`, rendering 1.5 months |
+| P1-5 | Insight 3 overstates the driver ranking | **RESOLVED** — now derives "2.0 to 2.6 times" live from the sensitivity grid |
+| — | README sheet says "five charts"; there are four | **RESOLVED** |
+
+### P2 — resolved
+
+| ID | Finding | Status |
+|---|---|---|
+| P2-1 | Payment timing flags silently drop payments for days 26–31 | **RESOLVED** — flags now test both candidate months and clamp to month end; days 1–31 all verified |
+| P2-2 | Control 9 cannot detect compensating errors | **RESOLVED** — rewritten as a per-item check against an independent date-coverage block |
+| P2-3 | Error-scan controls partly defeated by `IFERROR` | **PARTIAL** — ranges extended to Assumptions and the Dashboard chart block; the most consequential masked paths now carry positive-value assertions via controls #33–#35. Blanket assertions across all 73 `IFERROR` sites remain open. |
+| P2-4 | No integrity controls on Scenario 2 and 3 blocks | **RESOLVED** — controls #31, #32, #33 added |
+| P2-5 | Only 3 of 8 Dashboard KPI cards have link controls | **RESOLVED** — control #35 ties the remaining five plus the three scenario cards |
+| P2-7 | Consignment commission uses a different base in P&L and cash | **RESOLVED** — P&L moved to the net basis; unit label and opening receivable aligned |
+| P2-12 | Missing receipts-completeness control | **RESOLVED** — control #34 added |
+
+### P2 — outstanding
+
+| ID | Finding | Disposition |
+|---|---|---|
+| P2-6 | No data validation anywhere | Deferred to Phase 4 — the correctness risk it guarded is now closed at the logic layer |
+| P2-8 | Scenarios print area truncates its own headline | Deferred to Phase 4 — fix before any PDF export; `A79` is now longer than when audited |
+| P2-9 | Inventory note implies a reconciliation that does not hold | Deferred to Phase 4 — wording |
+| P2-10 | KPI card label/value alignment disagree | Deferred to Phase 4 — cosmetic |
+| P2-11 | "Preferred scenario" decided on a 0.9% difference | Deferred deliberately — the corrected cash figures now strongly support the same selection |
+
+### P3
+
+All nine deferred as optional, except **P3-6** (hardcoded "of 30" in the control count), **RESOLVED** incidentally when the control count was made dynamic.
+
+### Raised during Phase 3, not present in this audit
+
+| Finding | Severity | Status |
+|---|---|---|
+| Excel stamps the author's absolute local path (`x15ac:absPath`) into `xl/workbook.xml` on every save, publishing the OS account name and folder layout | Deployment / privacy | **RESOLVED** — scrubbed at package level. Excel re-adds it on every save, so **the scrub must be repeated before each public release.** |
+
+### Control framework
+
+**30 → 35 controls**, with controls 9, 26, 29 and 30 upgraded in place. Status roll-up and count made dynamic. Final state: **35 of 35 PASS**, zero formula errors across all nine sheets, Scenario 1 still reproducing the base forecast to 2.9 × 10⁻¹¹.
