@@ -172,7 +172,7 @@ Two package-level residues that Excel cannot remove through its own object model
 * **Scope:** `xl/workbook.xml`
 * **Issue:** Saving through Excel introduced
 
-  `<x15ac:absPath url="C:\Users\abuba\Workspace\projects\New folder\retail-fpa-cashflow-model\model\"/>`
+  `<x15ac:absPath url="C:\Users\<account>\...\retail-fpa-cashflow-model\model\"/>`  *(path redacted)*
 
   Excel writes the workbook's absolute local directory on every save. On a public repository this publishes the operating-system account name and the local folder layout — precisely the class of leak the Phase 2 privacy audit was checking for, introduced by the remediation itself.
 * **Why it matters:** This is a genuine deployment/privacy defect in a file intended for public download, and it is invisible from Excel's user interface. It would have shipped unnoticed had the package not been re-inspected after saving.
