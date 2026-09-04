@@ -217,6 +217,10 @@ Controls are written to be independent of the thing they check wherever that is 
 
 **No hidden plugs.** There are no hardcoded numbers buried inside formulas, no hidden sheets, no hidden rows or columns, no macros, and no external links. What you see is the model.
 
+**Numbers are formatted to be read.** Negatives in parentheses, zeros as a hyphen, no cents anywhere. Red is reserved for figures where a negative is a *warning* — weekly cash movement, headroom against the buffer, a KPI result — and deliberately not applied to P&L cost lines, where every figure is negative by construction and colouring them all would be noise.
+
+**Risk is signalled, not shouted.** Cash below the buffer is a single tinted cell rather than a filled row; cash within 15% of it is amber; the lowest week is marked by tinting only that week's column header. A passing control is quiet green text, so a failing one is unmissable.
+
 **Scenarios rebuild, they do not overlay.** A scenario that applies a percentage to a result cannot tell you *when* cash moves. One that reconstructs the weekly path can.
 
 **Outputs are linked, not typed.** Every dashboard KPI and every sentence of management commentary is generated from the cells it describes. Change an assumption and the prose changes with it — which is also why the commentary can be trusted not to drift from the numbers.

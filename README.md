@@ -122,7 +122,8 @@ retail-fpa-cashflow-model/
 │   └── Atelier_North_FPA_Model.xlsx     the model
 ├── docs/
 │   └── model-methodology.md             how it is built, and why
-├── screenshots/                          the pages below
+├── screenshots/                          the six pages shown above
+├── LICENSE
 └── README.md
 ```
 
