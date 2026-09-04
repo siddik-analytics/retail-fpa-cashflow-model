@@ -1,0 +1,24 @@
+# Excel temporary files
+~$*.xlsx
+~$*.xlsm
+*.tmp
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# IDE
+.vscode/
+.idea/
+
+# Local working files
+working/
+temp/
+archive/
